@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPLAZA - Explorando la Plaza</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos generales y fondo */
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            text-align: center;
+            /* Imagen de fondo desenfocada */
+            background: url('WhatsApp Image 2025-05-27 at 14.17.28.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh; /* Asegura que el fondo cubra toda la altura de la ventana */
+            z-index: -1; /* Envía el fondo detrás del contenido */
+        }
+
+        /* Contenedor principal para el contenido, para que no se desenfoque */
+        .content-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1; /* Asegura que el contenido esté por encima del fondo */
+            background-color: rgba(255, 255, 255, 0.6); /* Un ligero fondo blanco semi-transparente para la legibilidad */
+            padding: 20px;
+            box-sizing: border-box; /* Incluye padding en el ancho total */
+        }
+
+        h1 {
+            font-size: 3.5em;
+            color: #0056b3; /* Un azul más vibrante */
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Sombra para el texto */
+        }
+
+        .main-image {
+            border-radius: 15px; /* Bordes redondeados para la imagen */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+            max-width: 90%; /* Asegura que la imagen sea responsiva */
+            height: auto;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease-in-out; /* Animación al hacer hover */
+        }
+
+        .main-image:hover {
+            transform: scale(1.05); /* Agranda la imagen ligeramente al pasar el ratón */
+        }
+
+        .navigation-menu {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+            justify-content: center;
+            gap: 25px; /* Espacio entre los elementos de la lista */
+            margin-top: 30px;
+        }
+
+        .navigation-menu li {
+            background-color: #007bff; /* Color de fondo para los botones */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+            padding: 15px 30px; /* Padding interno para los botones */
+        }
+
+        .navigation-menu li:hover {
+            background-color: #0056b3; /* Color más oscuro al pasar el ratón */
+            transform: translateY(-5px); /* Pequeño levantamiento al pasar el ratón */
+        }
+
+        .navigation-menu a {
+            text-decoration: none;
+            color: #fff; /* Texto blanco para los enlaces */
+            font-size: 1.5em;
+            font-weight: bold;
+            display: block; /* Para que todo el área del li sea clicable */
+        }
+
+        /* Mensaje interactivo */
+        #welcome-message {
+            margin-top: 40px;
+            padding: 15px 30px;
+            background-color: #28a745; /* Verde para el mensaje */
+            color: #fff;
+            border-radius: 10px;
+            font-size: 1.2em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: none; /* Oculto por defecto, se mostrará con JS */
+            opacity: 0; /* Para la animación de aparición */
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            .navigation-menu {
+                flex-direction: column; /* Apila los botones en pantallas pequeñas */
+                gap: 15px;
+            }
+            .navigation-menu li {
+                width: 80%; /* Ancho de los botones en pantallas pequeñas */
+                margin: 0 auto;
+            }
+            .navigation-menu a {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <h1>SPLAZA</h1>
+        <img src="C:\Users\areco\OneDrive\Desktop\Practica\imagenes\WhatsApp Image 2025-05-27 at 14.17.28.jpeg" alt="Imagen de la plaza" class="main-image" width="480" height="360">
+        
+        <ul class="navigation-menu">
+            <li><a href="./Plazatecnologia/Turistico.html">Turistico</a></li>
+            <li><a href="./Plazatecnologia/EPETN°1.html">EPET N°1</a></li>
+            <li><a href="./Plazatecnologia/Historia.html">Historia de la plaza</a></li>
+        </ul>
+
+        <div id="welcome-message">
+            ¡Bienvenido a SPLAZA! Esperamos que disfrutes tu visita.
+        </div>
+    </div>
+
+    <script>
+        // JavaScript para la interactividad
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainImage = document.querySelector('.main-image');
+            const welcomeMessage = document.getElementById('welcome-message');
+
+            // Función para mostrar el mensaje de bienvenida después de un retraso
+            setTimeout(() => {
+                welcomeMessage.style.display = 'block';
+                // Pequeño retraso para que la transición de opacidad sea visible
+                setTimeout(() => {
+                    welcomeMessage.style.opacity = '1';
+                }, 50);
+            }, 1000); // Muestra el mensaje después de 1 segundo
+
+            // Puedes añadir más interactividad aquí, por ejemplo:
+            // - Cambiar la imagen principal al hacer clic en ella
+            // - Efectos de sonido al pasar el ratón por los enlaces
+            // - Un modal con más información al hacer clic en un botón
+        });
+    </script>
+</body>
+</html>
