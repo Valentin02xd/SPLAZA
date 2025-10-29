@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto EPET N°1 - Plazoleta Niño Jesús</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #0066ff 0%, #00d4ff 100%);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.5);
+            position: relative;
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #00d4ff 100%);
+            color: #000000;
+            padding: 10px 15px;
+            border: 2px solid #00d4ff;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        .back-button:hover {
+            background: linear-gradient(135deg, #00d4ff 0%, #ffffff 100%);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.8);
+            transform: translateY(-2px);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .info-section {
+            background: linear-gradient(135deg, #0a0a2e 0%, #1a1a3e 100%);
+            margin-bottom: 25px;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+            border: 2px solid #00d4ff;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .info-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .info-section h2 {
+            color: #00d4ff;
+            margin-top: 0;
+            border-bottom: 2px solid #00d4ff;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+        .info-section p, .info-section ul {
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        .info-section ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .info-section ul li {
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #0a0a2e 0%, #000000 100%);
+            color: #00d4ff;
+            margin-top: 40px;
+            border-top: 2px solid #00d4ff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" onclick="history.back()" class="back-button">← Volver</a>
+        <h1>Proyecto EPET N°1</h1>
+    </header>
+
+    <main>
+        <section class="info-section" id="sobre-proyecto">
+            <h2>Sobre el Proyecto: Plazoleta del Niño Jesús</h2>
+            <p>La EPET N°1 ha sido seleccionada para desarrollar un innovador proyecto en la Plazoleta del Niño Jesús.
+               Esta iniciativa tiene como objetivo principal facilitar el acceso a información relevante para los
+               residentes y visitantes del barrio mediante el uso de códigos QR.</p>
+            <p>Al escanear estos códigos, las personas podrán obtener rápidamente datos útiles como números de emergencia,
+               ubicación del hospital más cercano, farmacias de turno, información sobre puntos turísticos de interés, y más.</p>
+        </section>
+
+        <section class="info-section" id="descripcion-detallada">
+            <h2>Descripción Detallada del Proyecto</h2>
+            <p>El núcleo del proyecto consiste en la creación e implementación de un sistema de códigos QR estratégicamente ubicados
+               en la plazoleta. Cada código QR estará enlazado a contenido digital específico, diseñado para ser claro, conciso y
+               fácilmente accesible desde dispositivos móviles.</p>
+            <p>Se busca mejorar la comunicación y la disponibilidad de información esencial, contribuyendo así a una comunidad más informada y conectada.</p>
+        </section>
+
+        <section class="info-section" id="equipo-trabajo">
+            <h2>Equipo de Trabajo</h2>
+            <p>Este proyecto está siendo llevado a cabo por un dedicado grupo de alumnos de la EPET N°1:</p>
+            <ul>
+                <li>Brando</li>
+                <li>Lautaro</li>
+                <li>Mauro</li>
+                <li>Mikeas</li>
+                <li>Agustín</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 EPET N°1. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.info-section');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>

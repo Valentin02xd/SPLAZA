@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPLAZA - Explorando la Plaza</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: #ffffff;
+            text-align: center;
+            background: #000000;
+            min-height: 100vh;
+        }
+
+        .content-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            background: linear-gradient(135deg, #000000 0%, #0a0a2e 50%, #000000 100%);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            color: #00d4ff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 40px rgba(0, 212, 255, 0.4);
+            font-weight: bold;
+            letter-spacing: 3px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 40px rgba(0, 212, 255, 0.4);
+            }
+            to {
+                text-shadow: 0 0 30px rgba(0, 212, 255, 1), 0 0 60px rgba(0, 212, 255, 0.6), 0 0 80px rgba(0, 150, 255, 0.4);
+            }
+        }
+
+        .main-image {
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.6), 0 8px 16px rgba(0, 0, 0, 0.8);
+            max-width: 90%;
+            height: auto;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: 3px solid #00d4ff;
+        }
+
+        .main-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(0, 212, 255, 0.9), 0 8px 20px rgba(0, 0, 0, 0.9);
+        }
+
+        .navigation-menu {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .navigation-menu li {
+            background: linear-gradient(135deg, #0066ff 0%, #00d4ff 100%);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 100, 255, 0.5);
+            transition: all 0.3s ease-in-out;
+            padding: 15px 30px;
+            border: 2px solid #00d4ff;
+        }
+
+        .navigation-menu li:hover {
+            background: linear-gradient(135deg, #00d4ff 0%, #ffffff 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.8);
+        }
+
+        .navigation-menu a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1.5em;
+            font-weight: bold;
+            display: block;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .navigation-menu li:hover a {
+            color: #000000;
+            text-shadow: none;
+        }
+
+        #welcome-message {
+            margin-top: 40px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #0066ff 0%, #00d4ff 100%);
+            color: #ffffff;
+            border-radius: 10px;
+            font-size: 1.2em;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.5);
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            border: 2px solid #00d4ff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            .navigation-menu {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .navigation-menu li {
+                width: 80%;
+                margin: 0 auto;
+            }
+            .navigation-menu a {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <h1>SPLAZA</h1>
+        <img src="./imagenes/WhatsApp Image 2025-05-27 at 14.17.28.jpeg" alt="Imagen de la plaza" class="main-image" width="480" height="360">
+        
+        <ul class="navigation-menu">
+            <li><a href="./Plazatecnologia/Turistico.html">Turistico</a></li>
+            <li><a href="./Plazatecnologia/EPETN°1.html">EPET N°1</a></li>
+            <li><a href="./Plazatecnologia/Historia.html">Historia de la plaza</a></li>
+        </ul>
+
+        <div id="welcome-message">
+            ¡Bienvenido a SPLAZA! Esperamos que disfrutes tu visita.
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainImage = document.querySelector('.main-image');
+            const welcomeMessage = document.getElementById('welcome-message');
+
+            setTimeout(() => {
+                welcomeMessage.style.display = 'block';
+                setTimeout(() => {
+                    welcomeMessage.style.opacity = '1';
+                }, 50);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
